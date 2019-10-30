@@ -19,11 +19,14 @@ var height = svgHeight - margin.top - margin.bottom;
 // and shift the latter by left and top margins.
 // =================================
 var svg = d3
-  .select("#scatter")
-  .append("svg")
+  .select("#scatter");
+  
+svg.append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight)
   .attr("chart");
+
+  console.log(svg);
 
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -31,7 +34,7 @@ var chartGroup = svg.append("g")
 // Step 3:
 // Import data from the data.csv file
 // =================================
-d3.csv("/data/data.csv"), function(error, healthData) {
+d3.csv("assets/data/data.csv"), function(error, healthData) {
   if (error) throw error;
 
 // parse data and convert to integers
